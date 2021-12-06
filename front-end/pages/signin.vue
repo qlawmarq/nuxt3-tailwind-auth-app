@@ -22,7 +22,7 @@
         />
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           Sign In
         </button>
         <NuxtLink to="/signup">
@@ -66,6 +66,8 @@ export default {
     const { value: password } = useField('password');
     const onSubmit = handleSubmit(async values => {
       const res = await ApiService.signin(values)
+      localStorage.setItem('nuxt3_auth', JSON.stringify(res.data.token));
+      localStorage.setItem('nuxt3_user', JSON.stringify(res.data.user));
       auth.setAuthState(res.data.token)
       auth.setUserState(res.data.user)
       $router.push('/')
