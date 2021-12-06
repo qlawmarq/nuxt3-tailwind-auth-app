@@ -3,6 +3,9 @@
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit="onSubmit">
       <h1 class="text-xl text-gray-700 font-bold mb-4">Sign up</h1>
       <img data-tooltip-target="gravatar" class="w-32 h-32 rounded-full mx-auto" :src="'http://www.gravatar.com/avatar/' + md5email" alt="" width="384" height="512">
+      <a class="mb-4 inline-block align-baseline text-xs text-blue-500 hover:text-blue-800" href="https://gravatar.com" target="_blank">
+        Let's update your profile image! <br />Sign in gravatar.com with the same email address.
+      </a>
       <div class="mb-4">
         <AtomsInputText
           v-model="email"
@@ -41,7 +44,7 @@
         />
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
           Sign up
         </button>
         <NuxtLink to="/signin">

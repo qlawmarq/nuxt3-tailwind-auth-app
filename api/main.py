@@ -2,18 +2,19 @@ from fastapi import FastAPI, HTTPException, Security
 from fastapi.middleware.cors import CORSMiddleware
 from database.query import query_get, query_put, query_update
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from fastapi.responses import JSONResponse
 from auth import Auth
 from user_model import AuthModel, UserModel
 
 app = FastAPI()
 
 origins = [
-    "http://localhost:8000/*",
-    "http://localhost:3000/*",
+    "http://localhost:8000",
+    "http://localhost:3000",
 ]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -49,15 +50,17 @@ def signup(user_details: UserModel):
 
 @app.post('/signin')
 def signin(user_details: AuthModel):
-    user = query_get("SELECT * FROM user WHERE email = %s",(user_details.email)) 
+    user = query_get("SELECT * FROM user WHERE email = %s",(user_details.email))
     if len(user) == 0:
-        return HTTPException(status_code=401, detail='Invalid email')
+        print('Invalid email')
+        raise HTTPException(status_code=401, detail='Invalid email')
     if (not auth_handler.verify_password(user_details.password, user[0]['password_hash'])):
-        return HTTPException(status_code=401, detail='Invalid password')
+        print('Invalid password')
+        raise HTTPException(status_code=401, detail='Invalid password')
     
     access_token = auth_handler.encode_token(user[0]['email'])
     refresh_token = auth_handler.encode_refresh_token(user[0]['email'])
-    return {'token': {'access_token': access_token, 'refresh_token': refresh_token}, 'user': user[0]}
+    return JSONResponse(status_code=200, content={'token': {'access_token': access_token, 'refresh_token': refresh_token}, 'user': user[0]})
 
 @app.get('/refresh_token')
 def refresh_token(credentials: HTTPAuthorizationCredentials = Security(security)):
@@ -87,8 +90,8 @@ def update_user(user_details: UserModel, credentials: HTTPAuthorizationCredentia
             )
         )
         user = query_get("SELECT * FROM user WHERE email = %s",(user_details.email))
-        return {'user': user[0]}
-    return {'result': 'Faild to authorize'}
+        return JSONResponse(status_code=200, content={'user': user[0]})
+    return JSONResponse(status_code=401, content={'error': 'Faild to authorize'})
 
 @app.get('/secret')
 def secret_data(credentials: HTTPAuthorizationCredentials = Security(security)):

@@ -5,7 +5,7 @@
 // https://tailwindcss.com/docs/functions-and-directives#theme
 
 html, body {
-  background-color: theme('colors.blue.500');
+  background-color: theme('colors.green.500');
   @apply text-gray-700;
 }
 

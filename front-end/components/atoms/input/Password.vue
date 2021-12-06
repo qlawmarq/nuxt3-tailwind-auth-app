@@ -15,7 +15,6 @@
       @blur="evt => emitValue('update:modelValue', evt.target.value)"
       @focus="evt => emitValue('update:modelValue', evt.target.value)"
     >
-    <p v-if="error" class="text-red-500 text-xs italic">{{ error }}</p>
     <div v-if="isActive" class="Password__icons">
       <div
         v-if="badge"
@@ -39,7 +38,7 @@
           </button>
       </div>
     </div>
-
+    <p v-if="error" class="text-red-500 text-xs italic">{{ error }}</p>
     <div v-if="showStrengthMeter" :class="[strengthMeterClass]">
       <div :class="[strengthMeterFillClass]" :data-score="passwordStrength"></div>
     </div>
@@ -371,7 +370,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    height: 100%;
+    height: 95px;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

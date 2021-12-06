@@ -18,9 +18,9 @@ $breakpoints: (
   }
 };
 
-@include breakpoint('sm') {
-  html, body {
-    background-color: theme('colors.pink.900');
-    color: theme('colors.white');
-  };
-};
+// @include breakpoint('sm') {
+//   html, body {
+//     background-color: theme('colors.pink.900');
+//     color: theme('colors.white');
+//   };
+// };
