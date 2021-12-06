@@ -17,6 +17,7 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
+    "nuxt3": "3.0.0-27307420.6a25d3e",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
@@ -31,8 +32,5 @@
     "vee-validate": "4.5.6",
     "yup": "0.32.11",
     "zxcvbn": "4.4.2"
-  },
-  "dependencies": {
-    "nuxt3": "3.0.0-27307420.6a25d3e"
   }
 }

@@ -40,15 +40,29 @@ npm run dev
 
 #### Trouble shooting
 
+##### `nuxi: command not found`
+
+If you found this error.
+
 ```bash
 nuxi: command not found
 ```
 
-If you found this, please try to install nuxt3 again.
+Please try to install nuxt3 again.
 
 ```bash
 npm i nuxt3
 ```
+
+##### `[vite] Failed to load source map`
+
+If you found this error.
+
+```bash
+ WARN  7:46:47 PM [vite] Failed to load source map for /node_modules/.vite/chunk-5MYMAFD2.js?v=6f923d85.
+```
+
+Please re-run `npm run dev` command.
 
 ### Production
 
