@@ -1,0 +1,36 @@
+{
+  "name": "nuxt3-fastapi-mysql",
+  "version": "0.0.1",
+  "description": "Simple app",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yopinoji/nuxt3-fastapi-mysql.git"
+  },
+  "author": "Masaki Yoshiiwa",
+  "private": true,
+  "scripts": {
+    "dev": "nuxi dev -o & tailwind-config-viewer -o -p 4000",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.36",
+    "@fortawesome/free-regular-svg-icons": "5.15.4",
+    "@fortawesome/free-solid-svg-icons": "5.15.4",
+    "@fortawesome/vue-fontawesome": "3.0.0-5",
+    "autoprefixer": "10.3.7",
+    "axios": "0.24.0",
+    "blueimp-md5": "2.19.0",
+    "nuxt3": "3.0.0-27251455.110b2b2",
+    "postcss": "8.3.9",
+    "sass": "1.43.2",
+    "tailwind-config-viewer": "1.6.2",
+    "tailwindcss": "2.2.17",
+    "vee-validate": "4.5.6",
+    "yup": "0.32.11",
+    "zxcvbn": "4.4.2"
+  }
+}
