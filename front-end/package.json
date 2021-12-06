@@ -24,7 +24,6 @@
     "autoprefixer": "10.3.7",
     "axios": "0.24.0",
     "blueimp-md5": "2.19.0",
-    "nuxt3": "3.0.0-27251455.110b2b2",
     "postcss": "8.3.9",
     "sass": "1.43.2",
     "tailwind-config-viewer": "1.6.2",
@@ -32,5 +31,8 @@
     "vee-validate": "4.5.6",
     "yup": "0.32.11",
     "zxcvbn": "4.4.2"
+  },
+  "dependencies": {
+    "nuxt3": "^3.0.0-27307420.6a25d3e"
   }
 }

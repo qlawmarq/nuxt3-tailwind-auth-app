@@ -38,6 +38,12 @@ Start the Tailwind config viewer on http://localhost:4000.
 npm run dev
 ```
 
+#### 
+
+```bash
+nuxi: command not found
+```
+
 ### Production
 
 Build the application for production:
