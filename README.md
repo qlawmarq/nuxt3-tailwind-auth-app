@@ -46,6 +46,10 @@ nuxi: command not found
 
 If you found this, please try to install nuxt3 again.
 
+```bash
+npm i nuxt3
+```
+
 ### Production
 
 Build the application for production:
