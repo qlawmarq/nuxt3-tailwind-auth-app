@@ -38,11 +38,13 @@ Start the Tailwind config viewer on http://localhost:4000.
 npm run dev
 ```
 
-#### 
+#### Trouble shooting
 
 ```bash
 nuxi: command not found
 ```
+
+If you found this, please try to install nuxt3 again.
 
 ### Production
 
