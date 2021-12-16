@@ -1,5 +1,6 @@
 
 import http from "./http";
+import { userModel, SigninModel } from './model'
 
 class ApiService {
 //   get(): Promise<any> {
@@ -8,14 +9,13 @@ class ApiService {
 //   post(data: any): Promise<any> {
 //     return http.post("/endpoint", data);
 //   }
-// TODO: Remove any type
-  signup(data: any): Promise<any> {
+  signup(data: userModel): Promise<any> {
     return http.post("/signup", data);
   }
-  signin(data: any): Promise<any> {
+  signin(data: SigninModel): Promise<any> {
     return http.post("/signin", data);
   }
-  updateUser(data: any): Promise<any> {
+  updateUser(data: userModel): Promise<any> {
     return http.post("/user/update", data);
   }
 }
