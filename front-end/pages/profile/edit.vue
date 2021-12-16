@@ -59,8 +59,8 @@
 </template>
 
 <script lang="ts">
-import apiClient from "lib/api/http";
-import ApiService from "lib/api/endpoints";
+import apiClient from "lib/axios/http";
+import ApiService from "lib/axios/endpoints";
 import { useForm, useField } from 'vee-validate';
 import { useNuxtApp } from '#app';
 import * as yup from 'yup';
