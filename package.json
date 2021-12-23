@@ -1,5 +1,5 @@
 {
-  "name": "nuxt3-fastapi-mysql",
+  "name": "nuxt3-tailwind-sample-auth-app",
   "version": "0.0.1",
   "description": "Simple app",
   "engines": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yopinoji/nuxt3-fastapi-mysql.git"
+    "url": "https://github.com/masaiborg/nuxt3-tailwind-sample-auth-app.git"
   },
   "author": "Masaki Yoshiiwa",
   "private": true,
