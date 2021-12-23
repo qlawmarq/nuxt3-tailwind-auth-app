@@ -1,5 +1,7 @@
 # nuxt3-tailwind-sample-auth-app
 
+This app was created for prototyping purposes.
+
 Based on:
 - Nuxt3 (Vue3)
 - Tailwind CSS
