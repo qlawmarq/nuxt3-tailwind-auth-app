@@ -1,8 +1,4 @@
-# nuxt3-fastapi-mysql
-
-___
-
-## Front-end
+# nuxt3-tailwind-sample-auth-app
 
 Based on:
 - Nuxt3 (Vue3)
@@ -21,7 +17,7 @@ Recommended Editors:
 Recommended Pligins:
 - [Volor](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-### Setup
+## Setup
 
 Need to install `Node.js >= 14` first.
 Make sure to install the dependencies.
@@ -50,28 +46,11 @@ npm run build
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
 
-___
 
 ## API Server & DB Server
 
-Based on:
-- FastAPI
-- MySQL
-
-Use JWT for authentication
-
-### Setup
-
-Please install `Docker` and `Docker compose` first.
-
-```bash
-docker-compose build
-docker-compose up
-```
-Start the API server on http://localhost:8000.
-Also, you can check API document on http://localhost:8000/redoc.
-
-___
+Please clone from following:
+https://github.com/masaiborg/fastapi-mysql-starter-with-auth
 
 ## Trouble shooting
 
@@ -88,14 +67,3 @@ Please try to install nuxt3 again.
 ```bash
 npm i nuxt3
 ```
-
-### `[vite] Failed to load source map`
-
-If you found this kind of error, and can not load develop server.
-
-```bash
- WARN  7:46:47 PM [vite] Failed to load source map for /node_modules/.vite/chunk-5MYMAFD2.js?v=6f923d85.
-```
-
-Please remove `package-lock.json` and install the dependencies.
-And please re-run `npm run dev` command.
