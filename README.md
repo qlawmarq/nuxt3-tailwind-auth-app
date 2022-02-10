@@ -52,7 +52,7 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
 ## API Server & DB Server
 
 Please clone from following:
-https://github.com/masaiborg/fastapi-mysql-starter-with-auth
+https://github.com/masaiborg/fastapi-mysql-docker
 
 ## Trouble shooting
 
