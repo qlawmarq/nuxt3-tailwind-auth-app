@@ -9,7 +9,6 @@ library.add(faEyeSlash)
 
 export default defineNuxtPlugin((nuxtApp: any) => {
     nuxtApp.vueApp.component('fa', FontAwesomeIcon )
-
     // router middleware, which block unauthoricated access.
 	const router = nuxtApp.$router
     const authState = useState('auth')
