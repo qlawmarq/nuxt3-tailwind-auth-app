@@ -16,22 +16,23 @@ Validation Library:
 Recommended Editors:
 - [VSCode](https://code.visualstudio.com/)
 
-Recommended Pligins:
+Recommended VSCode Plugins:
 - [Volor](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
 ## Setup
 
 Need to install `Node.js >= 14` first.
+
 Make sure to install the dependencies.
 
 ```bash
-cd front-end
 npm i
 ```
 
 ### Development
 
 Start the development server on http://localhost:3000.
+
 Start the Tailwind config viewer on http://localhost:4000.
 
 ```bash
