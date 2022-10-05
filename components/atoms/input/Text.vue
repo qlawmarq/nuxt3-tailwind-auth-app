@@ -5,10 +5,10 @@
     </label>
     <input
       v-bind="$attrs"
+      :id="id"
       v-model="modelValueComputed"
       :type="inputType"
       :class="[defaultClass, $attrs.disabled ? disabledClass : '']"
-      :id="id"
       :placeholder="placeholder"
       :modelValue="modelValueComputed"
     />

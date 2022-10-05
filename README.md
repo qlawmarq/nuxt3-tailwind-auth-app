@@ -1,12 +1,16 @@
 # nuxt3-tailwind-auth-app
 
-This app was created for prototyping purposes.
+An example app using Nuxt3, TailwindCSS, ESLint & Prettier with GitHub Actions, etc.
 
-Based on:
+## Elements
+
+Base:
 - [Nuxt3 (Vue3)](https://v3.nuxtjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-For more infos, please look at the [Nuxt3](https://v3.nuxtjs.org) and [Tailwind CSS](https://tailwindcss.com).
+Linter/Formatter:
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 
 Validation Library:
 - [VeeValidate](https://vee-validate.logaretm.com/v4/)

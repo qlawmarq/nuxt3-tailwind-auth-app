@@ -23,37 +23,37 @@
       </a>
       <div class="mb-4">
         <AtomsInputText
+          :id="'email'"
           v-model="email"
           :label="'E-Mail'"
           :placeholder="'Please input your E-Mail.'"
-          :id="'email'"
           :error="errors.email"
         />
       </div>
       <div class="mb-4">
         <AtomsInputText
+          :id="'first_name'"
           v-model="first_name"
           :label="'First name'"
           :placeholder="'Please input your first name.'"
-          :id="'first_name'"
           :error="errors.first_name"
         />
       </div>
       <div class="mb-4">
         <AtomsInputText
+          :id="'last_name'"
           v-model="last_name"
           :label="'Last name'"
           :placeholder="'Please input your last name.'"
-          :id="'last_name'"
           :error="errors.last_name"
         />
       </div>
       <div class="mb-6">
         <AtomsInputPassword
+          :id="'password'"
           v-model="password"
           :label="'New Password'"
           :placeholder="'Please input your password.'"
-          :id="'password'"
           :error="errors.password"
           :toggle="true"
         />
@@ -80,20 +80,15 @@
 </template>
 
 <script lang="ts">
-import apiClient from "lib/axios/http";
-import ApiService from "lib/axios/endpoints";
 import { useForm, useField } from "vee-validate";
 import { useNuxtApp } from "#app";
 import * as yup from "yup";
 import md5 from "blueimp-md5";
+import ApiService from "lib/axios/endpoints";
+
 export default {
   name: "Index",
   layout: "default",
-  head() {
-    return {
-      title: "Profile",
-    };
-  },
   setup() {
     const auth = useAuth();
     const { $router } = useNuxtApp();
@@ -120,12 +115,6 @@ export default {
     const { value: last_name } = useField("last_name");
 
     const onSubmit = handleSubmit(async (values) => {
-      // TODO: create common setter for token
-      apiClient.interceptors.request.use(function (config) {
-        const token = auth.authState.value?.access_token;
-        config.headers.Authorization = `Bearer ${token}`;
-        return config;
-      });
       const res = await ApiService.updateUser(values);
       auth.setUserState(res.data.user);
       $router.push("/");
@@ -141,6 +130,11 @@ export default {
       last_name,
       md5email,
       onSubmit,
+    };
+  },
+  head() {
+    return {
+      title: "Profile",
     };
   },
 };

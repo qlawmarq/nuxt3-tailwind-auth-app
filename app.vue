@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import "./assets/tailwind.scss";
+import apiClient from "./lib/axios/http";
 export default {
   setup() {
     const { $router } = useNuxtApp();
@@ -19,6 +20,14 @@ export default {
     if (unauthRoutes.includes(currentRoute) && auth) {
       $router.push("/");
     }
+    // Set auth token
+    apiClient.interceptors.request.use(function (config) {
+      const token = auth.authState.value?.access_token;
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    });
     return {};
   },
 };

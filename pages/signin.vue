@@ -7,19 +7,19 @@
       <h1 class="text-xl text-gray-700 font-bold mb-4">Sign in</h1>
       <div class="mb-4">
         <AtomsInputText
+          :id="'email'"
           v-model="email"
           :label="'E-Mail'"
           :placeholder="'Please input your E-Mail.'"
-          :id="'email'"
           :error="errors.email"
         />
       </div>
       <div class="mb-6">
         <AtomsInputPassword
+          :id="'password'"
           v-model="password"
           :label="'Password'"
           :placeholder="'Please input your password.'"
-          :id="'password'"
           :error="errors.password"
           :toggle="true"
         />
@@ -46,18 +46,14 @@
 </template>
 
 <script lang="ts">
-import ApiService from "lib/axios/endpoints";
 import { useForm, useField } from "vee-validate";
 import { useNuxtApp } from "#app";
 import * as yup from "yup";
+import ApiService from "lib/axios/endpoints";
+
 export default {
-  name: "Sign in",
+  name: "SignIn",
   layout: "default",
-  head() {
-    return {
-      title: "Sign in",
-    };
-  },
   setup() {
     const { $router } = useNuxtApp();
     // Get state from `composables/auth.ts`
@@ -89,6 +85,11 @@ export default {
       email,
       password,
       onSubmit,
+    };
+  },
+  head() {
+    return {
+      title: "Sign in",
     };
   },
 };
