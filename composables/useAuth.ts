@@ -1,27 +1,27 @@
-import { useState } from '#app'
+import { useState } from "#app";
 
 export const useAuth = () => {
-  const authState = useState('auth', () => {
+  const authState = useState("auth", () => {
     try {
-      return JSON.parse(localStorage.getItem('nuxt3_auth'))
+      return JSON.parse(localStorage.getItem("nuxt3_auth"));
     } catch (error) {
-      return null
+      return null;
     }
-  })
-  const setAuthState = (newState :any) => {
+  });
+  const setAuthState = (newState: any) => {
     authState.value = newState;
   };
 
-  const userState = useState('user', () => {
+  const userState = useState("user", () => {
     try {
-      return JSON.parse(localStorage.getItem('nuxt3_user'))
+      return JSON.parse(localStorage.getItem("nuxt3_user"));
     } catch (error) {
-      return null
+      return null;
     }
-  })
-  const setUserState = (newState :any) => {
+  });
+  const setUserState = (newState: any) => {
     userState.value = newState;
   };
-  
-  return {authState, setAuthState, userState, setUserState};
-}
+
+  return { authState, setAuthState, userState, setUserState };
+};

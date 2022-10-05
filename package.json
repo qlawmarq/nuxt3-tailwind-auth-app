@@ -1,35 +1,39 @@
 {
-  "name": "nuxt3-tailwind-sample-auth-app",
-  "version": "0.0.1",
-  "description": "Simple app",
+  "name": "nuxt3-tailwind-auth-app",
+  "version": "0.0.2",
+  "description": "An example app using Nuxt3 with TailwindCSS.",
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/masaiborg/nuxt3-tailwind-sample-auth-app.git"
+    "url": "https://github.com/cymagix/nuxt3-tailwind-auth-app.git"
   },
-  "author": "Masaki Yoshiiwa",
+  "author": "cymagix",
   "private": true,
   "scripts": {
-    "dev": "nuxi dev -o & tailwind-config-viewer -o -p 4000",
+    "dev": "nuxi dev -o",
+    "tailwind": "tailwind-config-viewer -o -p 4000",
     "build": "nuxi build",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css,vue}'"
   },
   "devDependencies": {
-    "nuxt3": "3.0.0-27307420.6a25d3e",
     "@fortawesome/fontawesome-svg-core": "1.2.36",
     "@fortawesome/free-regular-svg-icons": "5.15.4",
     "@fortawesome/free-solid-svg-icons": "5.15.4",
     "@fortawesome/vue-fontawesome": "3.0.0-5",
-    "autoprefixer": "10.3.7",
-    "axios": "0.24.0",
+    "@nuxt/vite-builder": "^3.0.0-rc.11",
+    "autoprefixer": "10.4.12",
+    "axios": "^1.0.0",
     "blueimp-md5": "2.19.0",
-    "postcss": "8.3.9",
-    "sass": "1.43.2",
-    "tailwind-config-viewer": "1.6.2",
-    "tailwindcss": "2.2.17",
-    "vee-validate": "4.5.6",
+    "nuxt": "3.0.0-rc.11",
+    "postcss": "8.4.17",
+    "prettier": "^2.7.1",
+    "sass": "1.55.0",
+    "tailwind-config-viewer": "1.7.2",
+    "tailwindcss": "3.1.8",
+    "vee-validate": "4.6.10",
     "yup": "0.32.11",
     "zxcvbn": "4.4.2"
   }
