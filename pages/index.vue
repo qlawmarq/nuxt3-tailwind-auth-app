@@ -53,7 +53,10 @@ export default {
     return {
       signout,
       v,
+<<<<<<< HEAD
       getUsers,
+=======
+>>>>>>> a46c62bd49868c04705526b25e5d8860d8b6d1b7
     };
   },
 };

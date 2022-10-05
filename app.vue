@@ -6,7 +6,10 @@
 
 <script lang="ts">
 import "./assets/tailwind.scss";
+<<<<<<< HEAD
 import apiClient from "./lib/axios/http";
+=======
+>>>>>>> a46c62bd49868c04705526b25e5d8860d8b6d1b7
 export default {
   setup() {
     const { $router } = useNuxtApp();
