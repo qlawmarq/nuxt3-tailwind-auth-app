@@ -1,7 +1,7 @@
 <template>
   <div class="Input">
     <label v-if="label" class="Input__label" :for="id">
-      {{label}}
+      {{ label }}
     </label>
     <input
       v-bind="$attrs"
@@ -11,13 +11,12 @@
       :id="id"
       :placeholder="placeholder"
       :modelValue="modelValueComputed"
-    >
+    />
     <p v-if="error" class="text-red-500 text-xs italic">{{ error }}</p>
   </div>
 </template>
 
 <script lang="ts">
-
 export default {
   inheritAttrs: false,
   props: {
@@ -25,7 +24,7 @@ export default {
      * Binded modelValue
      */
     modelValue: {
-      type: String
+      type: String,
     },
     /**
      * id for input & label
@@ -56,7 +55,7 @@ export default {
      */
     inputType: {
       type: String,
-      default: 'text'
+      default: "text",
     },
     /**
      * CSS Class for the Input field
@@ -64,7 +63,7 @@ export default {
      */
     defaultClass: {
       type: String,
-      default: 'Input__field'
+      default: "Input__field",
     },
     /**
      * CSS Class for the disabled Input field
@@ -72,7 +71,7 @@ export default {
      */
     disabledClass: {
       type: String,
-      default: 'Input__field--disabled'
+      default: "Input__field--disabled",
     },
     /**
      * CSS Class for the badge
@@ -81,7 +80,7 @@ export default {
      */
     errorClass: {
       type: String,
-      default: 'Input__badge--error'
+      default: "Input__badge--error",
     },
     /**
      * CSS Class for the badge
@@ -91,60 +90,58 @@ export default {
      */
     successClass: {
       type: String,
-      default: 'Input__badge--success'
+      default: "Input__badge--success",
     },
     /**
      * @type String
      */
     userInputs: {
       type: Array,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   // TODO: remove any type
   setup(props: any, { emit }: any) {
-    const { modelValue } = toRefs(props)
+    const { modelValue } = toRefs(props);
     const modelValueComputed = computed({
       get: () => modelValue.value,
       set: (value) => {
-        emit('update:modelValue', value)
+        emit("update:modelValue", value);
       },
-    })
+    });
     return {
-      modelValueComputed
-    }
+      modelValueComputed,
+    };
   },
-
-}
+};
 </script>
 
 <style lang="scss">
-  [v-cloak] {
-    display: none;
-  }
+[v-cloak] {
+  display: none;
+}
 
-  .Input {
-    @apply relative;
-  }
+.Input {
+  @apply relative;
+}
 
-  .Input__label {
-    @apply block text-gray-700 text-sm font-bold mb-2;
-  }
+.Input__label {
+  @apply block text-gray-700 text-sm font-bold mb-2;
+}
 
-  .Input__field {
-    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
-  }
+.Input__field {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
 
-  .Input__field--disabled {
-    @apply bg-gray-300;
-  }
+.Input__field--disabled {
+  @apply bg-gray-300;
+}
 
-  .Input__badge--error {
-    @apply bg-red-500;
-  }
+.Input__badge--error {
+  @apply bg-red-500;
+}
 
-  .Input__badge--success {
-    @apply bg-green-500
-  }
-
+.Input__badge--success {
+  @apply bg-green-500;
+}
 </style>

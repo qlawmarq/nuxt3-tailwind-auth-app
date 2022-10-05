@@ -1,10 +1,25 @@
 <template>
-  <div class="w-full max-w-xs">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit="onSubmit">
+  <div class="flex justify-center items-center">
+    <form
+      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      @submit="onSubmit"
+    >
       <h1 class="text-xl text-gray-700 font-bold mb-4">Sign up</h1>
-      <img data-tooltip-target="gravatar" class="w-32 h-32 rounded-full mx-auto" :src="'http://www.gravatar.com/avatar/' + md5email" alt="" width="384" height="512">
-      <a class="mb-4 inline-block align-baseline text-xs text-blue-500 hover:text-blue-800" href="https://gravatar.com" target="_blank">
-        Let's update your profile image! <br />Sign in gravatar.com with the same email address.
+      <img
+        data-tooltip-target="gravatar"
+        class="w-32 h-32 rounded-full mx-auto"
+        :src="'http://www.gravatar.com/avatar/' + md5email"
+        alt=""
+        width="384"
+        height="512"
+      />
+      <a
+        class="mb-4 inline-block align-baseline text-xs text-blue-500 hover:text-blue-800"
+        href="https://gravatar.com"
+        target="_blank"
+      >
+        Let's update your profile image! <br />Sign in gravatar.com with the
+        same email address.
       </a>
       <div class="mb-4">
         <AtomsInputText
@@ -44,33 +59,39 @@
         />
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        <button
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
           Sign up
         </button>
         <NuxtLink to="/signin">
-          <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" type="button" href="#">
-            Sign in
+          <a
+            class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+            type="button"
+            href="#"
+          >
+            Back to sign in
           </a>
         </NuxtLink>
       </div>
     </form>
-
   </div>
 </template>
 
 <script lang="ts">
 import ApiService from "lib/axios/endpoints";
-import { useForm, useField } from 'vee-validate';
-import { useNuxtApp } from '#app';
-import * as yup from 'yup';
+import { useForm, useField } from "vee-validate";
+import { useNuxtApp } from "#app";
+import * as yup from "yup";
 import md5 from "blueimp-md5";
 export default {
-  name: 'Signin',
+  name: "Signin",
   layout: "default",
   head() {
     return {
-      title: 'Sign up'
-    }
+      title: "Sign up",
+    };
   },
   setup() {
     const { $router } = useNuxtApp();
@@ -82,23 +103,35 @@ export default {
       password: yup.string().required().min(8),
     });
     // Create a form context with the validation schema
-    const { handleSubmit, errors } = useForm({
+    const { handleSubmit, errors, setErrors } = useForm({
       validationSchema: schema,
     });
     // No need to define rules for fields
-    const { value: email } = useField('email');
-    const { value: password } = useField('password');
-    const { value: first_name } = useField('first_name');
-    const { value: last_name } = useField('last_name');
-    console.log($router)
+    const { value: email } = useField("email");
+    const { value: password } = useField("password");
+    const { value: first_name } = useField("first_name");
+    const { value: last_name } = useField("last_name");
 
-    const onSubmit = handleSubmit(values => {
-      ApiService.signup(values)
-      $router.push('/signin')
-    });
+    const onSubmit = handleSubmit(
+      (values: {
+        email: string;
+        first_name: string;
+        last_name: string;
+        password: string;
+      }) => {
+        ApiService.signup(values)
+          .then(() => {
+            $router.push("/signin");
+          })
+          .catch((e) => {
+            console.error("API Exceprion", e);
+            setErrors({ email: "API returned an error." });
+          });
+      }
+    );
     const md5email = computed(() => {
-      return md5(String(email.value).trim().toLowerCase())
-    })
+      return md5(String(email.value).trim().toLowerCase());
+    });
     return {
       errors,
       email,
@@ -106,8 +139,8 @@ export default {
       first_name,
       last_name,
       md5email,
-      onSubmit
+      onSubmit,
     };
   },
-}
+};
 </script>
