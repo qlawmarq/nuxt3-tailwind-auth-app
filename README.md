@@ -9,8 +9,8 @@ Base:
 - [Tailwind CSS](https://tailwindcss.com/)
 
 Linter/Formatter:
-- ESLint
-- Prettier
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 
 Validation Library:
 - [VeeValidate](https://vee-validate.logaretm.com/v4/)

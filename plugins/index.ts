@@ -1,5 +1,4 @@
-import { defineNuxtPlugin } from "#app";
-import { useState } from "#app";
+import { defineNuxtPlugin , useState } from "#app";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";

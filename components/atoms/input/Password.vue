@@ -6,8 +6,8 @@
     <input
       :id="id"
       v-bind="$attrs"
-      :modelValue="modelValue"
       :ref="referenceValue"
+      :modelValue="modelValue"
       :type="inputType"
       :class="[defaultClass, $attrs.disabled ? disabledClass : '']"
       :placeholder="placeholder"
@@ -18,12 +18,12 @@
     <div v-if="isActive" class="Password__icons">
       <div
         v-if="badge"
+        v-cloak
         :class="[
           isSecure ? successClass : '',
           !isSecure && isActive ? errorClass : '',
         ]"
         class="Password__badge"
-        v-cloak
       >
         {{ passwordCount }}
       </div>
@@ -214,22 +214,6 @@ export default {
     };
   },
 
-  methods: {
-    togglePassword() {
-      if (this.isShowPassword) {
-        this.$emit("hide");
-        this.isShowPassword = false;
-      } else {
-        this.$emit("show");
-        this.isShowPassword = true;
-      }
-    },
-    emitValue(type, value) {
-      this.$emit(type, value);
-      this.password = value;
-    },
-  },
-
   computed: {
     /**
      * passwordStrength is the score calculated by zxcvbn
@@ -292,6 +276,22 @@ export default {
     },
     passwordStrength(score) {
       this.$emit("score", score);
+    },
+  },
+
+  methods: {
+    togglePassword() {
+      if (this.isShowPassword) {
+        this.$emit("hide");
+        this.isShowPassword = false;
+      } else {
+        this.$emit("show");
+        this.isShowPassword = true;
+      }
+    },
+    emitValue(type, value) {
+      this.$emit(type, value);
+      this.password = value;
     },
   },
 };

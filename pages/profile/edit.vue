@@ -89,11 +89,6 @@ import ApiService from "lib/axios/endpoints";
 export default {
   name: "Index",
   layout: "default",
-  head() {
-    return {
-      title: "Profile",
-    };
-  },
   setup() {
     const auth = useAuth();
     const { $router } = useNuxtApp();
@@ -135,6 +130,11 @@ export default {
       last_name,
       md5email,
       onSubmit,
+    };
+  },
+  head() {
+    return {
+      title: "Profile",
     };
   },
 };

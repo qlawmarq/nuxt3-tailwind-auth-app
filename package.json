@@ -18,6 +18,7 @@
     "start": "node .output/server/index.mjs",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css,vue}'",
     "lint": "eslint . --ext .vue,.ts",
+    "lint:fix": "eslint . --ext .vue,.ts  --fix",
     "tsc": "tsc"
   },
   "devDependencies": {

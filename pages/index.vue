@@ -16,9 +16,9 @@
       </div>
       <div class="mb-4">
         <button
-          @click="signout"
           class="bg-green-400 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
           type="button"
+          @click="signout"
         >
           Sign out
         </button>
@@ -31,11 +31,6 @@
 export default {
   name: "Index",
   layout: "default",
-  head() {
-    return {
-      title: "Welcome",
-    };
-  },
   setup() {
     const { $router } = useNuxtApp();
     const auth = useAuth();
@@ -53,6 +48,11 @@ export default {
     return {
       signout,
       v,
+    };
+  },
+  head() {
+    return {
+      title: "Welcome",
     };
   },
 };
