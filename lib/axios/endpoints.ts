@@ -17,6 +17,9 @@ class ApiService {
   updateUser(data: userModel): Promise<any> {
     return http.post("/v1/user/update", data);
   }
+  getUsers(): Promise<any> {
+    return http.get("/v1/users");
+  }
 }
 
 export default new ApiService();

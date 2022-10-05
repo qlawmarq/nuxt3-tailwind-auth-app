@@ -120,12 +120,6 @@ export default {
     const { value: last_name } = useField("last_name");
 
     const onSubmit = handleSubmit(async (values) => {
-      // TODO: create common setter for token
-      apiClient.interceptors.request.use(function (config) {
-        const token = auth.authState.value?.access_token;
-        config.headers.Authorization = `Bearer ${token}`;
-        return config;
-      });
       const res = await ApiService.updateUser(values);
       auth.setUserState(res.data.user);
       $router.push("/");
