@@ -3,8 +3,6 @@ name: linter
 on:
   pull_request:
     branches: [ master, main ]
-  push:
-    branches: [ feat/linter_formatter ]
 
 jobs:
   lint:

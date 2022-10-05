@@ -1,6 +1,6 @@
 # nuxt3-tailwind-auth-app
 
-This app was created for prototyping purposes.
+An example app using Nuxt3, TailwindCSS, ESLint & Prettier with GitHub Actions, etc.
 
 ## Elements
 
