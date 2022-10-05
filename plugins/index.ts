@@ -14,7 +14,7 @@ export default defineNuxtPlugin((nuxtApp: any) => {
   const authState = useState("auth");
   const authRoutes = ["/", "/profile/edit"];
   const unauthRoutes = ["/signup", "/signin"];
-  router.beforeEach((to: any, from: any, next: Function) => {
+  router.beforeEach((to: { path: string }, from: any, next: () => void) => {
     console.log(to.path);
     console.log(authState.value);
     if (authRoutes.includes(to.path) && !authState.value) {

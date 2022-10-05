@@ -22,11 +22,11 @@ export default {
     }
     // Set auth token
     apiClient.interceptors.request.use(function (config) {
-        const token = auth.authState.value?.access_token;
-        if(token){
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
+      const token = auth.authState.value?.access_token;
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
     });
     return {};
   },

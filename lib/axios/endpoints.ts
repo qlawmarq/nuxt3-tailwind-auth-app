@@ -11,12 +11,15 @@ class ApiService {
   signup(data: userModel): Promise<any> {
     return http.post("/v1/signup", data);
   }
+
   signin(data: SigninModel): Promise<any> {
     return http.post("/v1/signin", data);
   }
+
   updateUser(data: userModel): Promise<any> {
     return http.post("/v1/user/update", data);
   }
+
   getUsers(): Promise<userModel[]> {
     return http.get("/v1/users");
   }

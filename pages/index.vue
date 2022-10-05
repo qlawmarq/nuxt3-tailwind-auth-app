@@ -52,7 +52,7 @@ export default {
     };
     return {
       signout,
-      v
+      v,
     };
   },
 };

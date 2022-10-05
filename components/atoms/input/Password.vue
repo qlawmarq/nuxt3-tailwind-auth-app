@@ -4,13 +4,13 @@
       {{ label }}
     </label>
     <input
-      v-bind="$attrs"
-      :type="inputType"
-      :ref="referenceValue"
-      :class="[defaultClass, $attrs.disabled ? disabledClass : '']"
       :id="id"
-      :placeholder="placeholder"
+      v-bind="$attrs"
       :modelValue="modelValue"
+      :ref="referenceValue"
+      :type="inputType"
+      :class="[defaultClass, $attrs.disabled ? disabledClass : '']"
+      :placeholder="placeholder"
       @input="(evt) => emitValue('update:modelValue', (evt.target as HTMLInputElement).value)"
       @blur="(evt) => emitValue('update:modelValue', (evt.target as HTMLInputElement).value)"
       @focus="(evt) => emitValue('update:modelValue', (evt.target as HTMLInputElement).value)"
@@ -35,7 +35,7 @@
           tabindex="-1"
           @click.prevent="togglePassword()"
         >
-          <fa v-if="_showPassword" icon="eye" />
+          <fa v-if="isShowPassword" icon="eye" />
           <fa v-else icon="eye-slash" />
         </button>
       </div>
@@ -99,7 +99,7 @@ export default {
     /**
      * Display badge:
      * The badge shows your
-     * __password character count
+     * password character count
      * up to the defined secureLength
      * @type {Boolean}
      */
@@ -108,9 +108,9 @@ export default {
       default: true,
     },
     /**
-     * Show __password toggle:
+     * Show password toggle:
      * Show icon to toggle
-     * the __password visibility
+     * the password visibility
      */
     toggle: {
       type: Boolean,
@@ -118,7 +118,7 @@ export default {
     },
     /**
      * Prop to toggle the
-     * cleartext __password if
+     * cleartext password if
      * toggle is disabled
      */
     showPassword: {
@@ -161,7 +161,7 @@ export default {
     },
     /**
      * CSS Class for the badge
-     * if a __password does not match
+     * if a password does not match
      * the secureLength. Later for errors
      * @type {String}
      */
@@ -171,7 +171,7 @@ export default {
     },
     /**
      * CSS Class for the badge
-     * if a __password does match
+     * if a password does match
      * the secureLength. Later for
      * success messages possible.
      * @type {String}
@@ -209,24 +209,24 @@ export default {
   },
   data() {
     return {
-      __password: null,
-      _showPassword: false,
+      password: null,
+      isShowPassword: false,
     };
   },
 
   methods: {
     togglePassword() {
-      if (this._showPassword) {
+      if (this.isShowPassword) {
         this.$emit("hide");
-        this._showPassword = false;
+        this.isShowPassword = false;
       } else {
         this.$emit("show");
-        this._showPassword = true;
+        this.isShowPassword = true;
       }
     },
     emitValue(type, value) {
       this.$emit(type, value);
-      this.__password = value;
+      this.password = value;
     },
   },
 
@@ -236,53 +236,51 @@ export default {
      * @return {Number} Password Strength Score
      */
     passwordStrength() {
-      return this.__password
+      return this.password
         ? zxcvbn(
-            this.__password,
+            this.password,
             this.userInputs.length >= 1 ? this.userInputs : null
           ).score
         : null;
     },
 
     /**
-     * isSecure checks if the length of the __password is longer then
+     * isSecure checks if the length of the password is longer then
      * the defined `secureLength`
      * @return {Boolean} Password length longer then minLength
      */
     isSecure() {
-      return this.__password
-        ? this.__password.length >= this.secureLength
-        : null;
+      return this.password ? this.password.length >= this.secureLength : null;
     },
 
     /**
-     * isActive checks if a __password is entered.
-     * It's required for the __password count badge.
+     * isActive checks if a password is entered.
+     * It's required for the password count badge.
      * @return {Boolean} Password entered
      */
     isActive() {
-      return this.__password && this.__password.length > 0;
+      return this.password && this.password.length > 0;
     },
 
     /**
      * passwordCount holds the character count of the
-     * current __password. It shows the count up to the `secureLength`.
+     * current password. It shows the count up to the `secureLength`.
      * @return {Number} Password Character Count
      */
     passwordCount(): number {
       return (
-        this.__password &&
-        (this.__password.length > this.secureLength
+        this.password &&
+        (this.password.length > this.secureLength
           ? `${this.secureLength}+`
-          : this.__password.length)
+          : this.password.length)
       );
     },
     /**
-     * Changing the input type from __password to text
-     * based on the local _showPassword data or the showPassword prop
+     * Changing the input type from password to text
+     * based on the local isShowPassword data or the showPassword prop
      */
     inputType() {
-      return this._showPassword || this.showPassword ? "text" : "password";
+      return this.isShowPassword || this.showPassword ? "text" : "password";
     },
   },
   watch: {
