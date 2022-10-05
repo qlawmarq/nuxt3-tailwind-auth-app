@@ -11,9 +11,9 @@
       :id="id"
       :placeholder="placeholder"
       :modelValue="modelValue"
-      @input="(evt) => emitValue('update:modelValue', evt.target.value)"
-      @blur="(evt) => emitValue('update:modelValue', evt.target.value)"
-      @focus="(evt) => emitValue('update:modelValue', evt.target.value)"
+      @input="(evt) => emitValue('update:modelValue', (evt.target as HTMLInputElement).value)"
+      @blur="(evt) => emitValue('update:modelValue', (evt.target as HTMLInputElement).value)"
+      @focus="(evt) => emitValue('update:modelValue', (evt.target as HTMLInputElement).value)"
     />
     <div v-if="isActive" class="Password__icons">
       <div
