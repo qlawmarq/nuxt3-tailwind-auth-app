@@ -2,21 +2,15 @@ import http from "./http";
 import { userModel, SigninModel } from "./model";
 
 class ApiService {
-  //   get(): Promise<any> {
-  //     return http.get("/endpoint");
-  //   }
-  //   post(data: any): Promise<any> {
-  //     return http.post("/endpoint", data);
-  //   }
-  signup(data: userModel): Promise<any> {
+  signup(data: userModel) {
     return http.post("/v1/signup", data);
   }
 
-  signin(data: SigninModel): Promise<any> {
+  signin(data: SigninModel) {
     return http.post("/v1/signin", data);
   }
 
-  updateUser(data: userModel): Promise<any> {
+  updateUser(data: userModel) {
     return http.post("/v1/user/update", data);
   }
 

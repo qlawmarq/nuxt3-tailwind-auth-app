@@ -3,7 +3,7 @@ import { useState } from "#app";
 export const useAuth = () => {
   const authState = useState("auth", () => {
     try {
-      return JSON.parse(localStorage.getItem("nuxt3_auth"));
+      return JSON.parse(localStorage.getItem("nuxt3_auth") || "");
     } catch (error) {
       return null;
     }
@@ -14,7 +14,7 @@ export const useAuth = () => {
 
   const userState = useState("user", () => {
     try {
-      return JSON.parse(localStorage.getItem("nuxt3_user"));
+      return JSON.parse(localStorage.getItem("nuxt3_user") || "");
     } catch (error) {
       return null;
     }

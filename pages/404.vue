@@ -1,9 +1,9 @@
 <script lang="ts">
 // this 404 page is handled by nuxt automatically on normal routes
 // on /pokemon/[name].vue you have to force a redirect
-export default {
+export default defineNuxtComponent({
   layout: "default",
-};
+});
 </script>
 
 <template>
