@@ -86,7 +86,7 @@ import * as yup from "yup";
 import md5 from "blueimp-md5";
 import ApiService from "lib/axios/endpoints";
 
-export default {
+export default defineNuxtComponent({
   name: "Signin",
   layout: "default",
   setup() {
@@ -101,13 +101,17 @@ export default {
     // Create a form context with the validation schema
     const { handleSubmit, errors, setErrors } = useForm({
       validationSchema: schema,
+      initialValues: {
+        email: "",
+        first_name: "",
+        last_name: "",
+        password: "",
+      },
     });
-    // No need to define rules for fields
-    const { value: email } = useField("email");
-    const { value: password } = useField("password");
-    const { value: first_name } = useField("first_name");
-    const { value: last_name } = useField("last_name");
-
+    const { value: email } = useField<string>("email");
+    const { value: password } = useField<string>("password");
+    const { value: first_name } = useField<string>("first_name");
+    const { value: last_name } = useField<string>("last_name");
     const onSubmit = handleSubmit(
       (values: {
         email: string;
@@ -143,5 +147,5 @@ export default {
       title: "Sign up",
     };
   },
-};
+});
 </script>

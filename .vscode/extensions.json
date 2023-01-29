@@ -1,8 +1,5 @@
 {
-  "recommendations": [
-    "vue.volar",
-    "esbenp.prettier-vscode"
-  ],
+  "recommendations": ["vue.volar", "esbenp.prettier-vscode"],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

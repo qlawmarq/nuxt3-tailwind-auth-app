@@ -1,4 +1,4 @@
-import { defineNuxtPlugin , useState } from "#app";
+import { defineNuxtPlugin, useState } from "#app";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 library.add(faEye);
 library.add(faEyeSlash);
 
-export default defineNuxtPlugin((nuxtApp: any) => {
+export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component("fa", FontAwesomeIcon);
   // router middleware, which block unauthoricated access.
   const router = nuxtApp.$router;

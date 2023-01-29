@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from "nuxt";
+import { defineNuxtConfig } from "nuxt/config";
 import { resolve } from "pathe";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -8,14 +8,10 @@ export default defineNuxtConfig({
   alias: {
     lib: resolve(__dirname, "./lib"),
   },
-  build: {
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
     },
   },
 });

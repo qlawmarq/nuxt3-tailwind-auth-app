@@ -51,7 +51,7 @@ import { useNuxtApp } from "#app";
 import * as yup from "yup";
 import ApiService from "lib/axios/endpoints";
 
-export default {
+export default defineNuxtComponent({
   name: "SignIn",
   layout: "default",
   setup() {
@@ -66,10 +66,14 @@ export default {
     // Create a form context with the validation schema
     const { handleSubmit, errors } = useForm({
       validationSchema: schema,
+      initialValues: {
+        email: "",
+        password: "",
+      },
     });
     // No need to define rules for fields
-    const { value: email } = useField("email");
-    const { value: password } = useField("password");
+    const { value: email } = useField<string>("email");
+    const { value: password } = useField<string>("password");
     const onSubmit = handleSubmit(
       async (values: { email: string; password: string }) => {
         const res = await ApiService.signin(values);
@@ -92,5 +96,5 @@ export default {
       title: "Sign in",
     };
   },
-};
+});
 </script>

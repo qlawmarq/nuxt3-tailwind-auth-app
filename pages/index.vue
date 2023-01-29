@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-export default {
+export default defineNuxtComponent({
   name: "Index",
   layout: "default",
   setup() {
@@ -55,5 +55,5 @@ export default {
       title: "Welcome",
     };
   },
-};
+});
 </script>
