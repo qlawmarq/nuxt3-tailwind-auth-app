@@ -53,4 +53,4 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
 ## API Server & DB Server
 
 If you need API & DB Server, please clone from following:  
-https://github.com/masaiborg/fastapi-mysql-docker
+https://github.com/CyberBonfire/fastapi-mysql-docker
