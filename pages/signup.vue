@@ -1,9 +1,6 @@
 <template>
-  <div class="flex justify-center items-center">
-    <form
-      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-      @submit="onSubmit"
-    >
+  <AtomsDivCard>
+    <form @submit="onSubmit">
       <h1 class="text-xl text-gray-700 font-bold mb-4">Sign up</h1>
       <img
         data-tooltip-target="gravatar"
@@ -76,7 +73,7 @@
         </NuxtLink>
       </div>
     </form>
-  </div>
+  </AtomsDivCard>
 </template>
 
 <script lang="ts">

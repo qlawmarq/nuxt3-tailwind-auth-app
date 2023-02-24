@@ -1,9 +1,6 @@
 <template>
-  <div class="flex justify-center items-center">
-    <form
-      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-      @submit="onSubmit"
-    >
+  <AtomsDivCard>
+    <form @submit="onSubmit">
       <h1 class="text-xl text-gray-700 font-bold mb-4">Sign in</h1>
       <div class="mb-4">
         <AtomsInputText
@@ -22,6 +19,7 @@
           :placeholder="'Please input your password.'"
           :error="errors.password"
           :toggle="true"
+          :show-strength-meter="false"
         />
       </div>
       <div class="flex items-center justify-between">
@@ -42,7 +40,7 @@
         </NuxtLink>
       </div>
     </form>
-  </div>
+  </AtomsDivCard>
 </template>
 
 <script lang="ts">

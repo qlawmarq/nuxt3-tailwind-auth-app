@@ -1,0 +1,147 @@
+
+  [v-cloak] {
+    display: none;
+  }
+  
+  .Input {
+    @apply relative;
+  }
+  
+  .Input__label {
+    @apply block text-gray-700 text-sm font-bold mb-2;
+  }
+  
+  .Input__field {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+  }
+  
+  .Input__field--disabled {
+    @apply bg-gray-300;
+  }
+  
+  .Input__badge--error {
+    @apply bg-red-500;
+  }
+  
+  .Input__badge--success {
+    @apply bg-green-500;
+  }
+
+  
+  .Password__strength-meter {
+    position: relative;
+    height: 3px;
+    background: #ddd;
+    margin: 10px auto 20px;
+    border-radius: 3px;
+  }
+  
+  .Password__strength-meter:before,
+  .Password__strength-meter:after {
+    content: "";
+    height: inherit;
+    background: transparent;
+    display: block;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 5px 0 5px;
+    position: absolute;
+    width: 20%;
+    z-index: 10;
+  }
+  
+  .Password__strength-meter:before {
+    left: 20%;
+  }
+  
+  .Password__strength-meter:after {
+    right: 20%;
+  }
+  
+  .Password__strength-meter--fill {
+    background: transparent;
+    height: inherit;
+    position: absolute;
+    width: 0;
+    border-radius: inherit;
+    transition: width 0.5s ease-in-out, background 0.25s;
+  }
+  
+  .Password__strength-meter--fill[data-score="0"] {
+    background: darkred;
+    width: 20%;
+  }
+  
+  .Password__strength-meter--fill[data-score="1"] {
+    background: orangered;
+    width: 40%;
+  }
+  
+  .Password__strength-meter--fill[data-score="2"] {
+    background: orange;
+    width: 60%;
+  }
+  
+  .Password__strength-meter--fill[data-score="3"] {
+    background: yellowgreen;
+    width: 80%;
+  }
+  
+  .Password__strength-meter--fill[data-score="4"] {
+    background: green;
+    width: 100%;
+  }
+  
+
+  .Password__icons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 95px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .Password__toggle {
+    position: relative;
+    width: 30px;
+    height: 20px;
+    font-size: 14px;
+  }
+  
+  .Password__badge {
+    position: relative;
+    color: white;
+    border-radius: 6px;
+    width: 30px;
+    height: 15px;
+    font-size: 14px;
+    margin-right: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Password__badge--error {
+    @apply bg-red-500;
+  }
+  
+  .Password__badge--success {
+    @apply bg-green-500;
+  }
+  
+  .Password__eye {
+    position: relative;
+    color: #777777;
+  
+    svg {
+      fill: currentColor;
+    }
+  
+    &:hover,
+    &:focus {
+      color: #404b69;
+    }
+  }

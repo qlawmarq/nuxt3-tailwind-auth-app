@@ -1,6 +1,6 @@
 <template>
-  <div class="Password">
-    <label v-if="label" class="Password__label" :for="id">
+  <div class="Input">
+    <label v-if="label" class="Input__label" :for="id">
       {{ label }}
     </label>
     <input
@@ -149,7 +149,7 @@ export default {
      */
     defaultClass: {
       type: String,
-      default: "Password__field",
+      default: "Input__field",
     },
     /**
      * CSS Class for the disabled Input field
@@ -157,7 +157,7 @@ export default {
      */
     disabledClass: {
       type: String,
-      default: "Password__field--disabled",
+      default: "Input__field--disabled",
     },
     /**
      * CSS Class for the badge
@@ -199,17 +199,10 @@ export default {
       type: String,
       default: "Password__strength-meter--fill",
     },
-    /**
-     * @type String
-     */
-    userInputs: {
-      type: Array,
-      default: () => [],
-    },
   },
   data() {
     return {
-      password: null,
+      password: "",
       isShowPassword: false,
     };
   },
@@ -219,13 +212,8 @@ export default {
      * passwordStrength is the score calculated by zxcvbn
      * @return {Number} Password Strength Score
      */
-    passwordStrength() {
-      return this.password
-        ? zxcvbn(
-            this.password,
-            this.userInputs.length >= 1 ? this.userInputs : null
-          ).score
-        : null;
+    passwordStrength(): number {
+      return this.password ? zxcvbn(this.password).score : 0;
     },
 
     /**
@@ -233,8 +221,8 @@ export default {
      * the defined `secureLength`
      * @return {Boolean} Password length longer then minLength
      */
-    isSecure() {
-      return this.password ? this.password.length >= this.secureLength : null;
+    isSecure(): boolean {
+      return this.password ? this.password.length >= this.secureLength : true;
     },
 
     /**
@@ -242,16 +230,16 @@ export default {
      * It's required for the password count badge.
      * @return {Boolean} Password entered
      */
-    isActive() {
-      return this.password && this.password.length > 0;
+    isActive(): boolean {
+      return this.password ? this.password.length > 0 : false;
     },
 
     /**
      * passwordCount holds the character count of the
      * current password. It shows the count up to the `secureLength`.
-     * @return {Number} Password Character Count
+     * @return {Number | String} Password Character Count
      */
-    passwordCount(): number {
+    passwordCount(): number | string {
       return (
         this.password &&
         (this.password.length > this.secureLength
@@ -269,9 +257,6 @@ export default {
   },
   watch: {
     modelValue(newValue) {
-      if (this.strengthMeterOnly) {
-        this.emitValue("input", newValue);
-      }
       this.$emit("feedback", zxcvbn(newValue).feedback);
     },
     passwordStrength(score) {
@@ -298,140 +283,5 @@ export default {
 </script>
 
 <style lang="scss">
-[v-cloak] {
-  display: none;
-}
-
-.Password {
-  @apply relative;
-}
-
-.Password__label {
-  @apply block text-gray-700 text-sm font-bold mb-2;
-}
-
-.Password__strength-meter {
-  position: relative;
-  height: 3px;
-  background: #ddd;
-  margin: 10px auto 20px;
-  border-radius: 3px;
-}
-
-.Password__strength-meter:before,
-.Password__strength-meter:after {
-  content: "";
-  height: inherit;
-  background: transparent;
-  display: block;
-  border-color: #fff;
-  border-style: solid;
-  border-width: 0 5px 0 5px;
-  position: absolute;
-  width: 20%;
-  z-index: 10;
-}
-
-.Password__strength-meter:before {
-  left: 20%;
-}
-
-.Password__strength-meter:after {
-  right: 20%;
-}
-
-.Password__strength-meter--fill {
-  background: transparent;
-  height: inherit;
-  position: absolute;
-  width: 0;
-  border-radius: inherit;
-  transition: width 0.5s ease-in-out, background 0.25s;
-}
-
-.Password__strength-meter--fill[data-score="0"] {
-  background: darkred;
-  width: 20%;
-}
-
-.Password__strength-meter--fill[data-score="1"] {
-  background: orangered;
-  width: 40%;
-}
-
-.Password__strength-meter--fill[data-score="2"] {
-  background: orange;
-  width: 60%;
-}
-
-.Password__strength-meter--fill[data-score="3"] {
-  background: yellowgreen;
-  width: 80%;
-}
-
-.Password__strength-meter--fill[data-score="4"] {
-  background: green;
-  width: 100%;
-}
-
-.Password__field {
-  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
-}
-
-.Password__field--disabled {
-  @apply bg-gray-300;
-}
-
-.Password__icons {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 95px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.Password__toggle {
-  position: relative;
-  width: 30px;
-  height: 20px;
-  font-size: 14px;
-}
-
-.Password__badge {
-  position: relative;
-  color: white;
-  border-radius: 6px;
-  width: 30px;
-  height: 15px;
-  font-size: 14px;
-  margin-right: 13px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.Password__badge--error {
-  @apply bg-red-500;
-}
-
-.Password__badge--success {
-  @apply bg-green-500;
-}
-
-.Password__eye {
-  position: relative;
-  color: #777777;
-
-  svg {
-    fill: currentColor;
-  }
-
-  &:hover,
-  &:focus {
-    color: #404b69;
-  }
-}
+@import "./common-input-style.scss";
 </style>

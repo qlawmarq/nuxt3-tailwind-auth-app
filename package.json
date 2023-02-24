@@ -5,11 +5,7 @@
   "engines": {
     "node": ">=16.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cymagix/nuxt3-tailwind-auth-app.git"
-  },
-  "author": "cymagix",
+  "author": "Masaki Yoshiiwa",
   "private": true,
   "scripts": {
     "dev": "nuxi dev -o",
