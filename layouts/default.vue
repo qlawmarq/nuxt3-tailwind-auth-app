@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex p-4 justify-center">
+  <div class="container flex justify-center items-center p-4">
     <slot />
   </div>
 </template>

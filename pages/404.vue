@@ -7,7 +7,7 @@ export default defineNuxtComponent({
 </script>
 
 <template>
-  <div>
+  <div class="flex justify-center items-center">
     <h1>404</h1>
     <p>The page you are looking for wasn't found.</p>
   </div>

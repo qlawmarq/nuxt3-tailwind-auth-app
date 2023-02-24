@@ -92,13 +92,6 @@ export default {
       type: String,
       default: "Input__badge--success",
     },
-    /**
-     * @type String
-     */
-    userInputs: {
-      type: Array,
-      default: () => [],
-    },
   },
   // TODO: remove any type
   setup(props: any, { emit }: any) {
@@ -117,31 +110,5 @@ export default {
 </script>
 
 <style lang="scss">
-[v-cloak] {
-  display: none;
-}
-
-.Input {
-  @apply relative;
-}
-
-.Input__label {
-  @apply block text-gray-700 text-sm font-bold mb-2;
-}
-
-.Input__field {
-  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
-}
-
-.Input__field--disabled {
-  @apply bg-gray-300;
-}
-
-.Input__badge--error {
-  @apply bg-red-500;
-}
-
-.Input__badge--success {
-  @apply bg-green-500;
-}
+@import "./common-input-style.scss";
 </style>
